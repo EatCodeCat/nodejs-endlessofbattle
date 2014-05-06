@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="js/lib/jquery-1.8.0.min.js" type="text/javascript">
+    </script>
+
+    <script src="js/lib/build/build.js" type="text/javascript">
+
+    </script>
+    <script type="text/javascript">
+
+        require('boot');
+    </script>
+    <script src="js/battleclient.js">
+
+    </script>
+    <style>
+        body{
+
+            font-family:"微软雅黑";
+            font-size: 12px;
+        }
+        .wapper{
+
+            margin: 0 auto 0 auto;
+            width: 650px;
+        }
+        .content-head ul{
+
+            list-style: none;
+        }
+        .content{
+
+            margin: 0 auto 0 auto;
+            width: 550px;
+        }
+
+        .content-head li{
+
+            float:left;
+            display: block;
+            width: 100px;
+            height: 20px;
+            border:1px solid;
+            margin-left: 3px;
+            text-align: center;
+            cursor:pointer;
+        }
+        .content-head li:hover {
+            background-color: #dedede;
+        }
+        .playerinfo{
+            height: 80px;
+            width: 500px;
+            border:1px solid;
+            margin-top: 20px;
+            padding-top:20px;
+            padding-left:20px;
+        }
+        .content-center{
+
+            width: 500px;
+            height: 500px;
+            border:1px solid;
+            overflow-y: auto;
+
+        }
+        .content-head{
+            height: 25px;
+
+        }
+        strong{
+            width: 70px;
+            text-align: center;
+            color:#800080 ;
+            display: inline-block;
+            height: 30px;
+
+        }
+        label{
+            display: inline-block;
+            width: 50px;
+            height: 30px;
+        }
+        .liactvity{
+            background-color: #dedede;
+        }
+        span{
+            color: green;
+        }
+        p{
+
+            height: 25px;
+            margin: 0;
+        }
+        .red-strong{
+            color: #ff0000;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="wapper">
+<div class="head">
+
+    <label>User</label> <input type="text" id="name" /> <input type="button" value ="添加" />
+    <label>chat</label> <input type="text" id="chat" /> <input type="button" value ="确定" />
+</div>
+
+<div class="content">
+    <div class="playerinfo">
+        <label>User</label> <strong id="playername">liang</strong><label>lv</label> <strong id="lv">80</strong><br />
+        <label>hp</label> <strong id="hp">120</strong><label>atk</label> <strong id="atk">1000</strong>
+
+
+    </div>
+    <div class="content-head">
+        <ul>
+
+            <li class="liactvity">
+                battle info
+            </li>
+            <li>
+                chat
+            </li>
+        </ul>
+    </div>
+    <div class="info-box">
+        <div class="content-center">
+            <p> 欢迎~~您</p>
+
+        </div>
+        <div class="content-center" style="display: none">
+
+            <p> 欢迎~~您</p>
+
+        </div>
+    </div>
+
+</div>
+</div>
+<script>
+
+    $('.content-head ul li').click(function(){
+        var i = $('.content-head ul li').index($(this));
+        $('.content-head ul li').removeClass('liactvity');
+        $(this).addClass('liactvity');
+        $('.info-box div').hide();
+        $('.info-box div').eq(i).show();
+
+
+    });
+</script>
+</body>
+</html>
