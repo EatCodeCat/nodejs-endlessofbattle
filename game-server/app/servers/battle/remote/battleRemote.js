@@ -1,6 +1,7 @@
 /**
  * Created by jian.liang on 14-5-6.
  */
+BattleManager = require("./../../../player/battleManager");
 
 module.exports = function(app) {
     return new BattleRemote(app);
@@ -22,22 +23,25 @@ var BattleRemote = function(app) {
  */
 BattleRemote.prototype.add = function(uid, sid, name, flag, cb) {
     var channel = this.channelService.getChannel(name, flag);
+
+    var users =  this.get(name, flag);
+    for(var i = 0; i< users.length; i++){
+        if(users[i] == uid){
+            cb({code:500, msg:"用户已经存在"})
+            return;
+        }
+    }
     var param = {
         route: 'onAdd',
         user: uid
     };
-    var users =  this.get(name, flag);
-    for(var i = 0; i< users.length; i++){
-        if(users[i] == uid){
-            return;
-        }
-    }
-    channel.pushMessage(param);
+    var player = BattleManager.PlayerManger.getPlayer(uid);
     if( !! channel) {
         channel.add(uid, sid);
     }
+    channel.pushMessage(param);
 
-    cb(this.get(name, flag));
+    cb(player.getPlayerInfo());
 };
 
 BattleRemote.prototype.get = function(name, flag) {

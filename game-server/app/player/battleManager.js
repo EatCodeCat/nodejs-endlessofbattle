@@ -3,11 +3,9 @@
  */
 
 
-var player  = require('player');
+var player  = require('./player');
 
-module.exports = function(){
-    return new BattleManager();
-}
+module.exports = new BattleManager();
 
 function BattleManager(){
 

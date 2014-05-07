@@ -60,20 +60,21 @@ handler.gameInit = function(data, session, next){
         return;
     }
 
+    var rid = session.get('rid');
+    console.log(rid);
     session.bind(uid);
-   // session.set('rid', uid);
+    session.set('rid', uid);
     session.push('rid', function(err) {
         if(err) {
             console.error('set rid for session service failed! error is : %j', err.stack);
         }
     });
-    console.log("gameInit " +  data.msg);
     session.on('closed', onUserLeave.bind(null, this.app));
     var sid = this.app.get('serverId');
     console.log(sid);
-    this.app.rpc.battle.battleRemote.add(session, uid, sid ,"battle1" ,true, function(users){
+    this.app.rpc.battle.battleRemote.add(session, uid, sid ,"battle1" ,true, function(player){
         next(null, {
-            users:users
+            player:player
         });
     });
 

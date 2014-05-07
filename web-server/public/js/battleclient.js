@@ -47,12 +47,17 @@ $(function(){
                         port: data.port,
                         log: true
                     }, function () {
-                        pomelo.request(route, {uid: uid, msg: 'can I come in?', code: "1"}, function (data) {
+                        pomelo.request(route, {uid: uid}, function (data) {
 
-                            pomelo.request('battle.battleHandle.gameStart', {code: 201}, function (object){
+                            $("#playername").text(data.player.username);
+                            $("#lv").text(data.player.lv);
+                            $("#hp").text(data.player.hp);
+                            $("#atk").text(data.player.atk);
+                            //$("#playername").text(data.name);
+                            /*pomelo.request('battle.battleHandle.gameStart', {code: 201}, function (object){
                                 console.log(object);
 
-                            });
+                            });*/
                         });
 
 
