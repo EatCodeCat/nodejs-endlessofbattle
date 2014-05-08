@@ -22,6 +22,7 @@ var player = Player.prototype;
  */
 player.attack = function(obj){
 
+
 }
 
 /**

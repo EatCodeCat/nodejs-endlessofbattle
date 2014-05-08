@@ -52,7 +52,7 @@
         }
         .playerinfo{
             height: 80px;
-            width: 500px;
+            width: 480px;
             border:1px solid;
             margin-top: 20px;
             padding-top:20px;
@@ -99,6 +99,9 @@
             font-weight: bold;
             font-size: 13px;
         }
+        input[type='text']{
+            width: 180px;
+        }
 
     </style>
 </head>
@@ -131,7 +134,7 @@
     </div>
     <div class="info-box">
         <div class="content-center">
-            <p> 欢迎~~您</p>
+            <p> 欢迎~~您1</p>
 
         </div>
         <div class="content-center" style="display: none">
@@ -149,10 +152,8 @@
         var i = $('.content-head ul li').index($(this));
         $('.content-head ul li').removeClass('liactvity');
         $(this).addClass('liactvity');
-        $('.info-box div').hide();
+        $('.info-box div:visible').hide();
         $('.info-box div').eq(i).show();
-
-
     });
 </script>
 </body>
